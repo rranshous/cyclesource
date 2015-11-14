@@ -1,0 +1,9 @@
+
+
+run docker containers for a limited amount of time
+
+api allows you to start containers from a published image
+they always have a limited amount of alive time with no minimum
+guarentee
+
+
