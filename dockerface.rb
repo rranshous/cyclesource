@@ -21,7 +21,8 @@ class Dockerface
     status = container.json
     {
       running: running?(status),
-      ports: detail_ports(status)
+      ports: detail_ports(status),
+      created_at: status['Created']
     }
   end
 
@@ -32,6 +33,11 @@ class Dockerface
       return false
     end
     container.stop({ timeout: kill_after_seconds }).id
+    container.wait kill_after_seconds
+  end
+
+  def self.running_containers
+    Docker::Container.all.map(&:id)
   end
 
   private
