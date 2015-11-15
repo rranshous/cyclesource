@@ -36,6 +36,9 @@ end
 
 def http_interface! tracker
   HttpInterface.set :tracker, tracker
+  HttpInterface.set :bind, ENV['HOST'] || '0.0.0.0'
+  HttpInterface.set :port, ENV['PORT']
+
   puts "running sinatra app"
   HttpInterface.run!
   puts "done running app"
