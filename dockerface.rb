@@ -12,8 +12,11 @@ class Dockerface
         "/var/run/docker.sock": {}
       }
     }
+    puts "creating container"
     container = Docker::Container.create opts
+    puts "starting container: #{container.id}"
     container.start
+    puts "done starting: #{container.id}"
     container.id
   end
 
