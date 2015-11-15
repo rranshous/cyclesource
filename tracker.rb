@@ -7,7 +7,7 @@ class Tracker
   end
 
   def running_containers
-    @state['running_containers']
+    @state['running_containers'] || []
   end
 
   def container_started container_id

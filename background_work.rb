@@ -3,7 +3,7 @@ require_relative 'dockerface'
 class BackgroundWork
 
   SLEEP_TIME = 10
-  MAX_AGE = 1 * 60
+  MAX_AGE = 5 * 60
 
   def self.start! tracker
     puts "starting background work loop"
@@ -21,6 +21,8 @@ class BackgroundWork
         end
       end
     end
+  ensure
+    puts "exiting background work loop"
   end
 
   private

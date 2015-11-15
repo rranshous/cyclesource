@@ -7,3 +7,4 @@ they always have a limited amount of alive time with no minimum
 guarentee
 
 
+docker run -it -P -v /var/run/docker.sock:/var/run/docker.sock rranshous/cyclesource

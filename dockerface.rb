@@ -4,7 +4,13 @@ class Dockerface
   def self.start_container image_path
     opts = {
       Image: image_path,
-      HostConfig: { PublishAllPorts: true }
+      HostConfig: {
+        PublishAllPorts: true,
+        Binds: ["/var/run/docker.sock:/var/run/docker.sock"]
+      },
+      Volumes: {
+        "/var/run/docker.sock": {}
+      }
     }
     container = Docker::Container.create opts
     container.start
