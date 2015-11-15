@@ -8,6 +8,8 @@ class Dockerface
         PublishAllPorts: true
       }
     }
+    puts "getting container"
+    system("./bin/docker pull #{image_path}")
     puts "creating container"
     container = Docker::Container.create opts
     puts "starting container: #{container.id}"
