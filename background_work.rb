@@ -3,6 +3,7 @@ require_relative 'dockerface'
 class BackgroundWork
 
   SLEEP_TIME = 10
+  MAX_AGE = 1 * 60
 
   def self.start! tracker
     puts "starting background work loop"
@@ -12,9 +13,8 @@ class BackgroundWork
       container_ids.each do |container_id|
         next unless tracker.running_containers.include? container_id
         puts "background checking #{container_id}"
-        max_age = 1 * 60
         container_status = Dockerface.status container_id
-        if age_in_seconds(container_status) > max_age
+        if age_in_seconds(container_status) > MAX_AGE
           puts "stopping"
           Dockerface.stop container_id, 10
           tracker.container_stopped container_id
