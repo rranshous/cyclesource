@@ -5,11 +5,7 @@ class Dockerface
     opts = {
       Image: image_path,
       HostConfig: {
-        PublishAllPorts: true,
-        Binds: ["/var/run/docker.sock:/var/run/docker.sock"]
-      },
-      Volumes: {
-        "/var/run/docker.sock": {}
+        PublishAllPorts: true
       }
     }
     puts "creating container"
