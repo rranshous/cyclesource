@@ -14,7 +14,9 @@ class HttpInterface < Sinatra::Base
     image_path = @post_data['image'].chomp
     puts "image_path: #{image_path}"
     container_id = Dockerface.start_container image_path
+    puts "updating tracker"
     settings.tracker.container_started container_id
+    puts "done starting"
     content_type :json
     { id: container_id }.to_json
   end
