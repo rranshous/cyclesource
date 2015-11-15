@@ -6,5 +6,6 @@ api allows you to start containers from a published image
 they always have a limited amount of alive time with no minimum
 guarentee
 
+state kept in containers /data dir
 
-docker run -it -P -v /var/run/docker.sock:/var/run/docker.sock rranshous/cyclesource
+docker run -d --name="cyclesource" -v /usr/bin/docker:/app/bin/docker -v /var/run/docker.sock:/varun/docker.sock rranshous/cyclesource:master
