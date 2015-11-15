@@ -6,7 +6,8 @@ class Dockerface
       Image: image_path,
       HostConfig: {
         PublishAllPorts: true,
-        Binds: ["/var/run/docker.sock:/var/run/docker.sock"]
+        Binds: ["/var/run/docker.sock:/var/run/docker.sock"],
+        Memory: '100000000'
       },
       Volumes: {
         "/var/run/docker.sock": {}
