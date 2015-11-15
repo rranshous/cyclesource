@@ -8,7 +8,6 @@ WORKDIR /app
 RUN bundle install --without development --without test --without client
 
 VOLUME /var/run/docker.sock
-VOLUME /app/bin/docker
 
 EXPOSE 80
 ENV PORT=80
