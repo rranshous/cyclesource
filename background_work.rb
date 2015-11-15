@@ -8,7 +8,9 @@ class BackgroundWork
   def self.start! tracker
     puts "starting background work loop"
     loop do
+      STDOUT.flush
       sleep SLEEP_TIME
+      puts "tick"
       container_ids = Dockerface.running_containers
       container_ids.each do |container_id|
         next unless tracker.running_containers.include? container_id

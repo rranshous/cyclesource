@@ -8,6 +8,7 @@ Thread.abort_on_exception = true
 
 # create persistant state
 state_path = File.join((ENV['DATA_DIR'] || './data'), 'skyscraper.lmc')
+puts "state path: #{state_path}"
 state = State.new(state_path)
 
 tracker = Tracker.new state

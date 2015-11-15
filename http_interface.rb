@@ -1,7 +1,6 @@
 require "sinatra/base"
 require 'json'
 require_relative 'dockerface'
-require 'pry'
 
 class HttpInterface < Sinatra::Base
 

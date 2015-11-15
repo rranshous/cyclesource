@@ -1,7 +1,6 @@
 require 'httparty'
 require 'json'
 require 'uri'
-require 'pry'
 
 service_url = ARGV.shift
 puts "Service: #{service_url}"
