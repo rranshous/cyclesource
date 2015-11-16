@@ -8,4 +8,9 @@ guarentee
 
 state kept in containers /data dir
 
+set PUBLIC_HOST and PUBLIC_PORT so it can embed it's url in containers it starts
+(PUBLIC_HOST/PORT) must be accessible by the container
+
+# TODO: docker linking to solve this issue
+
 docker run -d --name="cyclesource" -v /usr/bin/docker:/app/bin/docker -v /var/run/docker.sock:/varun/docker.sock rranshous/cyclesource:master

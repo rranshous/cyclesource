@@ -25,6 +25,7 @@ class HttpInterface < Sinatra::Base
     status = Dockerface.status(container_id)
     halt 404 if status == false
     content_type :json
+    puts "request host: #{request.host}"
     status.merge!({
       host: request.host
     })
@@ -40,8 +41,10 @@ class HttpInterface < Sinatra::Base
 end
 
 def http_interface! tracker
+  ENV['HOST'] ||= '0.0.0.0'
+  ENV['PORT'] ||= '8080'
   HttpInterface.set :tracker, tracker
-  HttpInterface.set :bind, ENV['HOST'] || '0.0.0.0'
+  HttpInterface.set :bind, ENV['HOST']
   HttpInterface.set :port, ENV['PORT']
 
   puts "running sinatra app"

@@ -8,7 +8,8 @@ class Dockerface
         PublishAllPorts: true
       },
       "Env": [
-        "DOCKER_IMAGE=#{image_path}"
+        "DOCKER_IMAGE=#{image_path}",
+        "CYCLESOURCE_URL=#{private_url}"
       ]
     }
     puts "getting container"
@@ -66,5 +67,13 @@ class Dockerface
 
   def self.running? container_json
      container_json['State']['Running']
+  end
+
+  def self.private_url
+    ip = Socket.ip_address_list.detect{|intf| intf.ipv4_private?}.ip_address
+    port = ENV['PORT']
+    url = "http://#{ip}:#{port}"
+    puts "private url: #{url}"
+    return url
   end
 end
