@@ -25,6 +25,9 @@ class HttpInterface < Sinatra::Base
     status = Dockerface.status(container_id)
     halt 404 if status == false
     content_type :json
+    status.merge!({
+      host: request.host
+    })
     status.to_json
   end
 

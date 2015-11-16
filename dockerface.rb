@@ -6,7 +6,10 @@ class Dockerface
       Image: image_path,
       HostConfig: {
         PublishAllPorts: true
-      }
+      },
+      "Env": [
+        "DOCKER_IMAGE=#{image_path}"
+      ]
     }
     puts "getting container"
     system("./bin/docker pull #{image_path}")
