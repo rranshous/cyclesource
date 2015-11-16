@@ -27,7 +27,7 @@ class HttpInterface < Sinatra::Base
     content_type :json
     puts "request host: #{request.host}"
     status.merge!({
-      host: request.host
+      public_host: request.host
     })
     status.to_json
   end

@@ -32,7 +32,8 @@ class Dockerface
     status = container.json
     {
       running: running?(status),
-      ports: detail_ports(status),
+      public_ports: detail_ports(status),
+      private_ip: container_ip(status),
       created_at: status['Created']
     }
   end
@@ -63,6 +64,10 @@ class Dockerface
       ports[container_port] = host_port
     end
     return ports
+  end
+
+  def self.container_ip container_json
+    container_json['NetworkSettings']['IPAddress']
   end
 
   def self.running? container_json
